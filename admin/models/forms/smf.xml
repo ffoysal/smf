@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset>
+		<field
+				name="id"
+				type="hidden"
+				/>
+		<field
+				name="first_name"
+				type="text"
+				label="COM_SMF_FIRST_NAME"
+				description="COM_SMF_FIRST_NAME_DESC"
+				size="40"
+				class="inputbox"
+				default=""
+				required="true"
+				/>
+		<field
+				name="last_name"
+				type="text"
+				label="COM_SMF_LAST_NAME"
+				description="COM_SMF_LAST_NAME_DESC"
+				size="40"
+				class="inputbox"
+				default=""
+				required="true"
+				/>
+<field name="gender" type="list" default="Male" label="COM_SMF_GENDER" description="COM_SMF_GENDER_DESC">
+  <option value="Male">Male</option>
+  <option value="Female">Female</option>
+</field>
+
+<field name="birth_date" type="calendar" label="COM_SMF_BIRTHDATE" description="" format="%Y-%m-%d" required="true"/>
+
+<field name="country" type="list" default="Bangladesh" label="COM_SMF_COUNTRY" description="">
+  <option value="Bangladesh">Bangladesh</option>
+  <option value="Nepal">Nepal</option>
+</field>
+
+<field name="monthly_sponsorship" type="number" default="0" label="COM_SMF_MONTHLY_SPONSORSHIP_AMOUNT" description="" step="1" />
+
+<field name="my_story" type="textarea" default="" label="COM_SMF_CHILD_STORY" description="" rows="10" cols="20" filter="raw"/>
+
+<field name="show_in_site" type="list" default="1" label="COM_SMF_SHOW_TO_USER" description="COM_SMF_SHOW_TO_USER_DESC">
+  <option value="1">Yes</option>
+  <option value="0">No</option>
+</field>
+		<field name="image_url"
+			type="media"
+			hide_none="1"
+			label="COM_SMF_IMAGE_URL"
+			description="COM_SMF_IMAGE_DESC"
+			directory="smf"
+			/>	
+</fieldset>
+</form>
