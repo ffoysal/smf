@@ -5,6 +5,11 @@
 				name="id"
 				type="hidden"
 				/>
+	<!--These fields are modified in the controller -->
+		<field name="birth_day" type="hidden" />					
+		<field name="birth_month" type="hidden" />					
+		<field name="birth_year" type="hidden" />	
+	<!-- END -->
 		<field
 				name="first_name"
 				type="text"
