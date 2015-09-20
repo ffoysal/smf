@@ -4,6 +4,10 @@
 defined('_JEXEC') or die('Restricted Access');
 ?>
 <form action="index.php?option=com_smf&view=datalist" method="post" id="adminForm" name="adminForm">
+         <?php
+            // Search tools bar
+            echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this));
+            ?>
 	<table class="table table-striped table-hover">
 		<thead>
 		<tr>

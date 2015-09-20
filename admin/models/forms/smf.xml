@@ -2,15 +2,6 @@
 <form>
 	<fieldset>
 		<field
-				name="id"
-				type="hidden"
-				/>
-	<!--These fields are modified in the controller -->
-		<field name="birth_day" type="hidden" />					
-		<field name="birth_month" type="hidden" />					
-		<field name="birth_year" type="hidden" />	
-	<!-- END -->
-		<field
 				name="first_name"
 				type="text"
 				label="COM_SMF_FIRST_NAME"
@@ -44,7 +35,7 @@
 
 <field name="monthly_sponsorship" type="number" default="0" label="COM_SMF_MONTHLY_SPONSORSHIP_AMOUNT" description="" step="1" />
 
-<field name="my_story" type="textarea" default="" label="COM_SMF_CHILD_STORY" description="" rows="10" cols="20" filter="raw"/>
+<field name="my_story" type="textarea" default="" label="COM_SMF_CHILD_STORY" description="" rows="4" filter="raw"/>
 
 <field name="show_in_site" type="list" default="1" label="COM_SMF_SHOW_TO_USER" description="COM_SMF_SHOW_TO_USER_DESC">
   <option value="1">Yes</option>
@@ -57,5 +48,14 @@
 			description="COM_SMF_IMAGE_DESC"
 			directory="smf"
 			/>	
+		<field
+				name="id"
+				type="hidden"
+				/>
+	<!--These fields are modified in the controller -->
+		<field name="birth_day" type="hidden" />					
+		<field name="birth_month" type="hidden" />					
+		<field name="birth_year" type="hidden" />	
+	<!-- END -->
 </fieldset>
 </form>

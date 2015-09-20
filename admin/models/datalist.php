@@ -10,6 +10,18 @@ defined('_JEXEC') or die('Restricted access');
  */
 class SmfModelDataList extends JModelList
 {
+    public function __construct($config = array())
+    {
+        if (empty($config['filter_fields']))
+        {
+            $config['filter_fields'] = array(
+                'id', 
+                'gender'
+            );
+        }
+ 
+        parent::__construct($config);
+    }	
 	/**
 	 * Method to build an SQL query to load the list data.
 	 *
@@ -24,6 +36,21 @@ class SmfModelDataList extends JModelList
 		// Create the base select statement.
 		$query->select('*')
                 ->from($db->quoteName('#__smf_child_data'));
+       	// Filter: like / search
+		$search = $this->getState('filter.search');
+ 
+		if (!empty($search))
+		{
+			$like = $db->quote('%' . $search . '%');
+			$query->where('first_name LIKE ' . $like);
+		}         
+ 		// Filter by gender
+		$gender = $this->getState('filter.gender');
+ 
+		if (!empty($gender))
+		{
+			$query->where('gender = ' . $db->quote($gender));
+		}				
  
 		return $query;
 	}

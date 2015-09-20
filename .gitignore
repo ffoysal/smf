@@ -1,0 +1,4 @@
+#ignore following files
+*.zip
+*.7z
+*.gz
