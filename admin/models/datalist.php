@@ -14,9 +14,9 @@ class SmfModelDataList extends JModelList
     {
         if (empty($config['filter_fields']))
         {
-            $config['filter_fields'] = array(
-                'id', 
-                'gender'
+            $config['filter_fields'] = array(                
+                'gender',
+				'birth_month'
             );
         }
  
@@ -51,7 +51,14 @@ class SmfModelDataList extends JModelList
 		{
 			$query->where('gender = ' . $db->quote($gender));
 		}				
+  		// Filter by birth month
+		$birthMonth = $this->getState('filter.birth_month');
  
+		if (!empty($birthMonth))
+		{
+			$query->where('birth_month = ' . $db->quote($birthMonth));
+		}	
+
 		return $query;
 	}
 }
