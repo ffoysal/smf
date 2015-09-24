@@ -8,13 +8,10 @@
  */
 
 defined('_JEXEC') or die;
-JHtml::_('formbehavior.chosen', 'select');
 ?>
 
-<?php echo $this->loadTemplate('form'); ?>
-<?php if (count($this->results) > 0) :
-	echo $this->loadTemplate('results');
-else :
-	echo $this->loadTemplate('error');
-endif; ?>
+<!--?php if ($this->error) : ?-->
+<div class="error">
+	<?php echo 'This is an error page!'; ?>
 </div>
+<!--?php endif; ?-->

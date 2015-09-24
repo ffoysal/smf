@@ -20,18 +20,149 @@ class smfViewChildList extends JViewLegacy
 		// Assign data to the view
 	function display($tpl = null)
 	{
-		// Assign data to the view
-		$this->msg = $this->get('Msg');
- 
-		// Check for errors.
-		if (count($errors = $this->get('Errors')))
+
+		// Start New Code
+		$app     = JFactory::getApplication();
+		$uri     = JUri::getInstance();
+		$error   = null;
+		$rows    = null;
+		$results = null;
+		$total   = 0;
+
+		// Get some data from the model
+		//$areas      = $this->get('areas');
+		$state      = $this->get('state');
+		//$gender = $state->get('gender');
+		$params     = $app->getParams();
+
+		// Built select country lists
+		$countryList   = array();
+		$countryList[] = JHtml::_('select.option', 'Bangladesh', JText::_('COM_SMF_COUNTRY_BAN'));
+		$countryList[] = JHtml::_('select.option', 'Kenya', JText::_('COM_SMF_COUNTRY_KEN'));
+
+		$lists             = array();
+		$lists['country'] = JHtml::_('select.genericlist', $countryList, 'country', 'class="inputbox"', 'value', 'text', $state->get('country'));
+
+
+		//<!-- TODO: Build Birth Month and Day here which is dynamic make it later, hard coded for now -->
+		// Built select birthMonth lists
+		$birthMonthList   = array();
+		$birthMonthList[] = JHtml::_('select.option', 'January', JText::_('January'));
+		$birthMonthList[] = JHtml::_('select.option', 'February', JText::_('February'));
+		$birthMonthList[] = JHtml::_('select.option', 'March', JText::_('March'));
+		$birthMonthList[] = JHtml::_('select.option', 'April', JText::_('April'));
+		$birthMonthList[] = JHtml::_('select.option', 'May', JText::_('May'));
+		$birthMonthList[] = JHtml::_('select.option', 'June', JText::_('June'));
+		$birthMonthList[] = JHtml::_('select.option', 'July', JText::_('July'));
+		$birthMonthList[] = JHtml::_('select.option', 'Auguest', JText::_('Auguest'));
+		$birthMonthList[] = JHtml::_('select.option', 'September', JText::_('September'));
+		$birthMonthList[] = JHtml::_('select.option', 'October', JText::_('October'));
+		$birthMonthList[] = JHtml::_('select.option', 'November', JText::_('November'));
+		$birthMonthList[] = JHtml::_('select.option', 'December', JText::_('December'));
+
+		//$lists             = array();
+		$lists['birthMonth'] = JHtml::_('select.genericlist', $birthMonthList, 'birthMonth', 'class="inputbox"', 'value', 'text', $state->get('birthMonth'));
+
+		
+		// Built select country lists
+		$birthDaylist   = array();
+		$birthDaylist[] = JHtml::_('select.option', '1', JText::_('1'));
+		$birthDaylist[] = JHtml::_('select.option', '2', JText::_('2'));
+		$birthDaylist[] = JHtml::_('select.option', '3', JText::_('3'));
+		$birthDaylist[] = JHtml::_('select.option', '4', JText::_('4'));
+		$birthDaylist[] = JHtml::_('select.option', '5', JText::_('5'));
+		$birthDaylist[] = JHtml::_('select.option', '6', JText::_('6'));
+		$birthDaylist[] = JHtml::_('select.option', '7', JText::_('7'));
+		$birthDaylist[] = JHtml::_('select.option', '8', JText::_('8'));
+		$birthDaylist[] = JHtml::_('select.option', '9', JText::_('9'));
+		$birthDaylist[] = JHtml::_('select.option', '10', JText::_('10'));
+
+		//$lists             = array();
+		$lists['birthDay'] = JHtml::_('select.genericlist', $birthDaylist, 'birthDay', 'class="inputbox"', 'value', 'text', $state->get('birthDay'));
+		
+		// Built select country lists
+		$ageList   = array();
+		$ageList[] = JHtml::_('select.option', '1', JText::_('1'));
+		$ageList[] = JHtml::_('select.option', '2', JText::_('2'));
+		$ageList[] = JHtml::_('select.option', '3', JText::_('3'));
+		$ageList[] = JHtml::_('select.option', '4', JText::_('4'));
+		$ageList[] = JHtml::_('select.option', '5', JText::_('5'));
+		$ageList[] = JHtml::_('select.option', '6', JText::_('6'));
+		$ageList[] = JHtml::_('select.option', '7', JText::_('7'));
+		$ageList[] = JHtml::_('select.option', '8', JText::_('8'));
+		$ageList[] = JHtml::_('select.option', '9', JText::_('9'));
+		$ageList[] = JHtml::_('select.option', '10', JText::_('10'));
+
+		//$lists             = array();
+		$lists['age'] = JHtml::_('select.genericlist', $ageList, 'age', 'class="inputbox"', 'value', 'text', $state->get('age'));
+
+		$genderList        = array();
+		$genderList[]       = JHtml::_('select.option', 'Male', JText::_('COM_SMF_MALE'));
+		$genderList[]       = JHtml::_('select.option', 'Female', JText::_('COM_SMF_FEMALE'));
+		$lists['gender'] = JHtml::_('select.radiolist', $genderList, 'gender', '', 'value', 'text', $state->get('match'));
+
+		// Log the search
+		//JSearchHelper::logSearch($gender, 'com_smf');
+
+		// Limit searchword
+		$lang        = JFactory::getLanguage();
+		$upper_limit = $lang->getUpperLimitSearchWord();
+		$lower_limit = $lang->getLowerLimitSearchWord();
+
+		/*if (SearchHelper::limitSearchWord($gender))
 		{
-			JLog::add(implode('<br />', $errors), JLog::WARNING, 'jerror');
- 
-			return false;
+			$error = JText::sprintf('COM_SEARCH_ERROR_SEARCH_MESSAGE', $lower_limit, $upper_limit);
 		}
- 
-		// Display the view
+
+		// Sanitise searchword
+		if (SearchHelper::santiseSearchWord($gender, $state->get('match')))
+		{
+			$error = JText::_('COM_SEARCH_ERROR_IGNOREKEYWORD');
+		}*/
+
+		//if (!$gender && !empty($this->input) && count($this->input->post))
+		//{
+			// $error = JText::_('COM_SEARCH_ERROR_ENTERKEYWORD');
+		//}
+
+		// Put the filtered results back into the model
+		// for next release, the checks should be done in the model perhaps...
+		//$state->set('keyword', $gender);
+
+		if ($error == null)
+		{
+			$results    = $this->get('data');
+			$total      = $this->get('total');
+			$pagination      = $this->get('pagination');
+			//echo $total;
+		}
+
+		// Check for layout override
+		$active = JFactory::getApplication()->getMenu()->getActive();
+
+		if (isset($active->query['layout']))
+		{
+			$this->setLayout($active->query['layout']);
+		}
+
+		// Escape strings for HTML output
+		$this->pageclass_sfx = htmlspecialchars($params->get('pageclass_sfx'));
+		$this->pagination    = &$pagination;
+		$this->results       = &$results;
+		$this->lists         = &$lists;
+		$this->params        = &$params;
+		$this->country      = $state->get('country');
+		$this->birthDay      = $state->get('birthDay');
+		$this->birthMonth      = $state->get('birthMonth');
+		$this->age      = $state->get('age');
+		//$this->gender     = $gender;
+		//$this->origkeyword   = $state->get('origkeyword');
+		$this->gender  = $state->get('match');
+		//$this->searchareas   = $areas;
+		$this->total         = $total;
+		$this->error         = $error;
+		$this->action        = $uri;
+
 		parent::display($tpl);
 	}
 }
