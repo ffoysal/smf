@@ -58,10 +58,10 @@ class SmfModelChildList extends JModelLegacy
 		// Set the search parameters
 		$gender  = urldecode($app->input->getString('gender'));
 		$match    = $app->input->get('gender', $gender, 'word');
-		$country = $app->input->get('country', $params->get('country', 'Bangladesh'), 'word');
-		$birthMonth = $app->input->get('birthMonth', $params->get('birthMonth', 'January'), 'word');
-		$birthDay = $app->input->get('birthDay', $params->get('birthDay', 1), 'uint');
-		$age = $app->input->get('age', $params->get('age', 1), 'uint');
+		$country = $app->input->get('country', $params->get('country', 'Please Select'), 'word');
+		$birthMonth = $app->input->get('birthMonth', $params->get('birthMonth', 'Please Select'), 'word');
+		$birthDay = $app->input->get('birthDay', $params->get('birthDay', 'Please Select'), 'uint');
+		$age = $app->input->get('age', $params->get('age', 'Please Select'), 'uint');
 		$this->setSearch($gender, $match, $country, $birthMonth, $birthDay, $age);
 
 		// Set the search areas

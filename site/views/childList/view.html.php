@@ -37,6 +37,7 @@ class smfViewChildList extends JViewLegacy
 
 		// Built select country lists
 		$countryList   = array();
+		$countryList[] = JHtml::_('select.option', 'Please Select', JText::_('COM_SMF_PLEASE_SELECT'));
 		$countryList[] = JHtml::_('select.option', 'Bangladesh', JText::_('COM_SMF_COUNTRY_BAN'));
 		$countryList[] = JHtml::_('select.option', 'Kenya', JText::_('COM_SMF_COUNTRY_KEN'));
 
@@ -47,6 +48,7 @@ class smfViewChildList extends JViewLegacy
 		//<!-- TODO: Build Birth Month and Day here which is dynamic make it later, hard coded for now -->
 		// Built select birthMonth lists
 		$birthMonthList   = array();
+		$birthMonthList[] = JHtml::_('select.option', 'Please Select', JText::_('COM_SMF_PLEASE_SELECT'));
 		$birthMonthList[] = JHtml::_('select.option', 'January', JText::_('January'));
 		$birthMonthList[] = JHtml::_('select.option', 'February', JText::_('February'));
 		$birthMonthList[] = JHtml::_('select.option', 'March', JText::_('March'));
@@ -66,6 +68,7 @@ class smfViewChildList extends JViewLegacy
 		
 		// Built select country lists
 		$birthDaylist   = array();
+		$birthDaylist[] = JHtml::_('select.option', 'Please Select', JText::_('COM_SMF_PLEASE_SELECT'));
 		$birthDaylist[] = JHtml::_('select.option', '1', JText::_('1'));
 		$birthDaylist[] = JHtml::_('select.option', '2', JText::_('2'));
 		$birthDaylist[] = JHtml::_('select.option', '3', JText::_('3'));
@@ -82,6 +85,7 @@ class smfViewChildList extends JViewLegacy
 		
 		// Built select country lists
 		$ageList   = array();
+		$ageList[] = JHtml::_('select.option', 'Please Select', JText::_('COM_SMF_PLEASE_SELECT'));
 		$ageList[] = JHtml::_('select.option', '1', JText::_('1'));
 		$ageList[] = JHtml::_('select.option', '2', JText::_('2'));
 		$ageList[] = JHtml::_('select.option', '3', JText::_('3'));
@@ -99,7 +103,7 @@ class smfViewChildList extends JViewLegacy
 		$genderList        = array();
 		$genderList[]       = JHtml::_('select.option', 'Male', JText::_('COM_SMF_MALE'));
 		$genderList[]       = JHtml::_('select.option', 'Female', JText::_('COM_SMF_FEMALE'));
-		$lists['gender'] = JHtml::_('select.radiolist', $genderList, 'gender', '', 'value', 'text', $state->get('match'));
+		$lists['gender'] = JHtml::_('select.radiolistInline', $genderList, 'gender', '', 'value', 'text', $state->get('match'));
 
 		// Log the search
 		//JSearchHelper::logSearch($gender, 'com_smf');

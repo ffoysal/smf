@@ -19,72 +19,69 @@
 	?>
 	<div class="search">
 	<form class="inline-form" id="searchForm" action="<?php echo JRoute::_('index.php?option=com_smf');?>" method="post">
-		<div class="row">
-			<div class="col-md-12">
-				<legend><?php echo JText::_('COM_SMF_SEARCH_FOR_A_CHILDREN');?></legend>
-			</div>
-		</div>
-		<div class="row" style="padding-bottom:20px;">
-			<div class="col-md-12">
-				<div class="row">
-					<div class="col-md-4 country-box">
-						<label for="country" class="country">
-							<?php echo JText::_('COM_SMF_COUNTRY_LEBEL');?>
-						</label>
-						<?php echo $this->lists['country'];?>
+		<nav class="navbar navbar-default">
+			<div class="row" style="padding:0px 15px 0px 15px;">			
+				<div class="col-md-12">
+					<legend>
+						<div class="row" style="padding:10px;"> 
+							<div class="col-md-10" style="border-right:1px solid #eee"><h3><?php echo JText::_('COM_SMF_SEARCH_FOR_A_CHILDREN');?></h3></div>
+							<div class="col-md-2" style="text-align:right;"><?php echo $this->pagination->getLimitBox(); ?></div>
+						</div>
+					</legend>	
+				</div>
+				<div class="row" style="padding-bottom:10px;">
+					<div class="col-md-12">
+						<div class="row" style="padding:0px 20px 0px 20px;">
+							<div class="col-md-3">
+								<label for="country" class="country">
+									<strong><?php echo JText::_('COM_SMF_COUNTRY_LEBEL');?></strong>
+								</label>
+								<?php echo $this->lists['country'];?>
+							</div>
+							<div class="col-md-9">
+								<div class="row">
+									<div class="col-md-3">
+										<label for="birthMonth" class="birthMonth-box">
+											<strong><?php echo JText::_('COM_SMF_BIRTH_MONTH');?></strong>
+										</label>
+										<?php echo $this->lists['birthMonth'];?>
+									</div>
+									<div class="col-md-3">
+										<label for="birthDay" class="birthDay-box">
+											<strong><?php echo JText::_('COM_SMF_BIRTH_DAY');?></strong>
+										</label>
+										<?php echo $this->lists['birthDay'];?>
+									</div>
+									<div class="col-md-3">
+										<label for="age" class="age-box">
+											<strong><?php echo JText::_('COM_SMF_AGE');?></strong>
+										</label>
+										<?php echo $this->lists['age'];?>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
-					<div class="col-md-4">
-						<label for="birthMonth" class="birthMonth-box">
-							<?php echo JText::_('COM_SMF_BIRTH_MONTH');?>
-						</label>
-						<?php echo $this->lists['birthMonth'];?>
+					<div class="clearfix"></div>
+				</div>
+				<div class="row" style="padding:0px 45px 10px 20px;">
+					<div class="col-md-8">
+						<fieldset class="gender">
+							<label for="gender" class="gender">
+								<strong><?php echo JText::_('COM_SMF_GENDER_LEBEL');?></strong>
+							</label>
+							<div class="gender-box">
+								<?php echo $this->lists['gender']; ?>
+							</div>
+						</fieldset>
 					</div>
-					<div class="col-md-4">
-						<label for="birthDay" class="birthDay-box">
-							<?php echo JText::_('COM_SMF_BIRTH_DAY');?>
-						</label>
-						<?php echo $this->lists['birthDay'];?>
+					<div class="col-md-4" style="padding-left:26px;">	
+						<div class="">
+							<button name="Search" onclick="this.form.submit()" class="btn hasTooltip" title="<?php echo JHtml::tooltipText('COM_SEARCH_SEARCH');?>"> Search <span class="icon-search"></span></button>
+						</div>
 					</div>
+					<input type="hidden" name="task" value="search" />
 				</div>
 			</div>
-			<div class="clearfix"></div>
-		</div>
-		<div class="row">
-			<div class="col-md-4">
-				<fieldset class="gender">
-					<label for="gender" class="gender">
-						<?php echo JText::_('COM_SMF_GENDER_LEBEL');?>
-					</label>
-					<div class="gender-box">
-						<?php echo $this->lists['gender']; ?>
-					</div>
-				</fieldset>
-			</div>
-			<div class="col-md-4">
-				<label for="age" class="age-box">
-					<?php echo JText::_('COM_SMF_AGE');?>
-				</label>
-				<?php echo $this->lists['age'];?>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12" style="text-align:right;">	
-				<div class="">
-					<button name="Search" onclick="this.form.submit()" class="btn hasTooltip" title="<?php echo JHtml::tooltipText('COM_SEARCH_SEARCH');?>"><span class="icon-search"></span></button>
-				</div>
-			</div>
-			<input type="hidden" name="task" value="search" />
-		</div>
-		<?php if ($this->total > 0) : ?>
-
-		<div class="form-limit">
-			<label for="limit">
-				<?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?>
-			</label>
-				<?php echo $this->pagination->getLimitBox(); ?>
-		</div>
-		<p class="counter">
-			<?php echo $this->pagination->getPagesCounter(); ?>
-		</p>
-		<?php endif; ?>
+		</nav>
 	</form>

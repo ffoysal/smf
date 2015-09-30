@@ -14,38 +14,34 @@ defined('_JEXEC') or die;
 	<!--table-->
 	<?php foreach ($this->results as $result) : ?>
 		<div class="row">
-    		<div class="col-md-4" style="padding:20px;">
-           		<img src="http://images.agoramedia.com/wte3.0/gcms/fy-ww-baby-growth-and-behavior.jpg" class="img-thumbnail" alt="Cinque Terre" width="250" height="180">
+    		<div class="col-md-4" style="padding:20px;border-right:1px solid #eee;">
+           		<img src="<?php echo $this->escape($result->image_url);?>" class="img-thumbnail" alt="Cinque Terre" width="250" height="180">
     		</div>
-	    	<div class="col-md-8 style="padding:20px;border:1px solid black;">
-	      		<div class="row" style="padding-top:20px;">
-	        		<div class="col-md-8">
-	           			<span><strong>Meet <a href="#"><?php echo $this->escape($result->first_name);?></a> in Bangladesh</strong></span> 
+	    	<div class="col-md-8">
+	      		<div class="row">
+	        		<div class="col-md-8 span12">
+	           			<h2>Meet <a href="#"><?php echo $this->escape($result->first_name);?></a> in <?php echo $this->escape($result->country);?></h2> 
 	        		</div>
 	      		</div>
 			    <div class="row">
-			        <div class="col-md-2" style="padding-top:10px;">
-			           <div><strong>Name: </strong> <?php echo $this->escape($result->first_name);?> </div> 
-			        </div>
-			        <div class="col-md-2" style="padding-top:10px;">
-			           <div class="row">
-			             <div class="col-md"><strong>Gender: </strong> <?php echo $this->escape($result->gender);?> </div> 
-			           </div> 
-			        </div>
-			        <div class="col-md-3" style="padding-top:10px;">
-			           <div><strong>Home: </strong> <?php echo $this->escape($result->country);?> </div> 
-			        </div>
+			    	<div class="col-md-8 span12">
+				    	<strong>Name: </strong> <?php echo $this->escape($result->first_name);?>    &nbsp;&nbsp;|&nbsp;&nbsp;
+				    	<strong>Gender: </strong> <?php echo $this->escape($result->gender);?>       &nbsp;&nbsp;|&nbsp;&nbsp;
+				        <strong>Home: </strong> <?php echo $this->escape($result->country);?> 
+				   	</div> 
 	      		</div> 
-	            <div class="row" style="padding-top:10px;">
-	        		<div class="col-md-8"> <?php echo $this->escape($result->my_story);?> </div>
+	            <div class="row" >
+	        		<div class="col-md-8 span12"> 
+	        			<?php echo $this->escape($result->my_story);?> 
+	        		</div>
 	      		</div>
-			    <div class="row" style="padding-top:10px;">
-			        <div class="col-md-3"><p class="glyphicon glyphicon-book"> Read my Story</p></div>
-			        <div class="col-md-4""><p class="glyphicon glyphicon-facetime-video"> Watch my video</p></div>
+			    <div class="row">
+			        <div class="col-md-3 span4"> <a href=""><span class="icon-book"></span> Read my story</a></div>
+			        <div class="col-md-4 span5"><a href=""><span class="icon-video"></span> Watch my video</a></div>
 			    </div>
-			    <div class="row" style="padding-top:10px;">
+			    <div class="row">
 			        <div class="col-md-8">
-			          <button type="button" class="btn btn-warning">Warning</button>
+			          <button type="button" class="btn btn-warning">Donate Now</button>
 			        </div>
 			    </div>
   			</div>
