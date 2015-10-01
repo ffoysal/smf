@@ -46,14 +46,32 @@ class SmfController extends JControllerLegacy
 		{
 			$post['gender'] = $gender;
 		}*/
-
-		$post['country']     = $this->input->getWord('country', null, 'post');
+		print_r("expression" . $this->input->getWord('country', null, 'post'));
+		if($this->input->getWord('country', null, 'post') != 'Please Select') {
+			$post['country']     = $this->input->getWord('country', null, 'post');
+		}
 		$post['birthMonth']     = $this->input->getWord('birthMonth', null, 'post');
 		$post['birthDay']     = $this->input->getUInt('birthDay', null, 'post');
 		$post['age']     = $this->input->getUInt('age', null, 'post');
 		$post['gender'] = $this->input->getWord('gender', null, 'post');
 		$post['limit']        = $this->input->getUInt('limit', null, 'post');
 
+		if ($post['country'] === 'Please Select' || $post['country'] === 'PleaseSelect' )
+		{
+			unset($post['country']);
+		}
+		if ($post['birthMonth'] === 'Please Select' || $post['birthMonth'] === 'PleaseSelect' )
+		{
+			unset($post['birthMonth']);
+		}
+		if ($post['birthDay'] === 0)
+		{
+			unset($post['birthDay']);
+		}
+		if ($post['age'] === 0)
+		{
+			unset($post['age']);
+		}
 		if ($post['limit'] === null)
 		{
 			unset($post['limit']);

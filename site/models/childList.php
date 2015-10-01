@@ -217,12 +217,15 @@ class SmfModelChildList extends JModelLegacy
 	{
 		//require_once JPATH_SITE . '/components/com_contact/helpers/route.php';
 		$db = JFactory::getDbo();
-		
+		//$whereClause = $db->quoteName('country') . " LIKE " . $db->quote($country . '%') . 'AND' .
+		//	$db->quoteName('gender') . " = " . $db->quote($gender );
+		$whrClause = $this->buildWhereClause($gender, $country, $birthMonth, $birthDay, $age, $db);
 		$query = $db->getQuery(true);
 		$query->select('*');
 		$query->from($db->quoteName('#__smf_child_data'));
-		$query->where($db->quoteName('country') . " LIKE " . $db->quote($country . '%') . 'AND' .
-			$db->quoteName('gender') . " = " . $db->quote($gender ));
+		if($whrClause) {
+			$query->where($whrClause);
+		}
 		print_r("Day");
 		print_r($birthDay);
 		print_r("Month");
@@ -249,6 +252,94 @@ class SmfModelChildList extends JModelLegacy
 			JFactory::getApplication()->enqueueMessage(JText::_('JERROR_AN_ERROR_HAS_OCCURRED'), 'error');
 		}
 		return $rows;
+	}
+/**
+	 * Search content (contacts).
+	 *
+	 * The SQL must return the following fields that are used in a common display
+	 * routine: href, title, section, created, text, browsernav.
+	 *
+	 * @param   string  $text      Target search string.
+	 * @param   string  $phrase    Matching option (possible values: exact|any|all).  Default is "any".
+	 * @param   string  $ordering  Ordering option (possible values: newest|oldest|popular|alpha|category).  Default is "newest".
+	 * @param   string  $areas     An array if the search is to be restricted to areas or null to search all areas.
+	 *
+	 * @return  array  Search results.
+	 *
+	 * @since   1.6
+	 */
+	public function buildWhereClause($gender, $country, $birthMonth, $birthDay, $age, $db)
+	{
+		$whereClause = '';
+		$curYear = date('Y');
+		$andString = '';
+
+		if($country != 'BAN') {
+			$whereClause = $db->quoteName('country') . " LIKE " . $db->quote($country . '%');	
+			$andString = " AND ";
+		}
+		if($gender != '') {
+			$whereClause = $whereClause . $andString . $db->quoteName('gender') . " = " . $db->quote($gender );
+			$andString = " AND ";
+		}
+		$monthStr = $this->getMonthInt($birthMonth);
+		print_r("expression" . $monthStr);
+		if($monthStr != 0) {
+			$whereClause = $whereClause . $andString . $db->quoteName('birth_month') . " = " . $db->quote($monthStr );
+			$andString = " AND ";
+		}
+		if($birthDay != 'Please Select') {
+			$whereClause = $whereClause . $andString . $db->quoteName('birth_day') . " = " . $db->quote($birthDay );
+			$andString = " AND ";
+		}
+		if($age != 'Please Select') {
+			$whereClause = $whereClause . $andString . $db->quoteName('birth_year') . " = " . $db->quote($curYear - $age);
+		}
+		print_r("curYear");
+		print_r($curYear);
+		print_r("Where Caluse");
+		print_r($whereClause);
+		return $whereClause;
+	}
+/**
+	 * Search content (contacts).
+	 *
+	 * The SQL must return the following fields that are used in a common display
+	 * routine: href, title, section, created, text, browsernav.
+	 * @return  $month  Search results.
+	 *
+	 * @since   1.6
+	 */
+	public function getMonthInt($month) {
+		$monthTemp = '';
+		if($month == 'January') {
+			$monthTemp = 1;
+		} else if($month == 'February') {
+			$monthTemp = 2;
+		} else if($month == 'March') {
+			$monthTemp = 3;
+		} else if($month == 'April') {
+			$monthTemp = 4;
+		} else if($month == 'May') {
+			$monthTemp = 5;
+		} else if($month == 'June') {
+			$monthTemp = 6;
+		} else if($month == 'July') {
+			$monthTemp = 7;
+		} else if($month == 'August') {
+			$monthTemp = 8;
+		} else if($month == 'September') {
+			$monthTemp = 9;
+		} else if($month == 'October') {
+			$monthTemp = 10;
+		} else if($month == 'November') {
+			$monthTemp = 11;
+		} else if($month == 'December') {
+			$monthTemp = 12;
+		} else {
+			$monthTemp = 0;
+		}
+		return $monthTemp;
 	}
 
 /* End - New code is being added for actual smf work */

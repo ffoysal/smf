@@ -12,8 +12,11 @@
 	JHtml::_('bootstrap.tooltip');
 
 	$doc = JFactory::getDocument();
-	$doc->addStyleSheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css');
-	$doc->addScript('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js', 'text/javascript');
+	$doc->addStyleSheet( 'templates/protostar/css/bootstrap.min.css' );
+	$doc->addStyleSheet( 'templates/protostar/css/custom.css' );
+	//$doc->addStyleSheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css');
+	$doc->addScript('templates/protostar/js/bootstrap.min.js', 'text/javascript');
+	$doc->addScript('templates/protostar/js/custom.js', 'text/javascript');
 
 	$lang = JFactory::getLanguage();
 	?>

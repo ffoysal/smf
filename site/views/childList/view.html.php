@@ -56,7 +56,7 @@ class smfViewChildList extends JViewLegacy
 		$birthMonthList[] = JHtml::_('select.option', 'May', JText::_('May'));
 		$birthMonthList[] = JHtml::_('select.option', 'June', JText::_('June'));
 		$birthMonthList[] = JHtml::_('select.option', 'July', JText::_('July'));
-		$birthMonthList[] = JHtml::_('select.option', 'Auguest', JText::_('Auguest'));
+		$birthMonthList[] = JHtml::_('select.option', 'August', JText::_('August'));
 		$birthMonthList[] = JHtml::_('select.option', 'September', JText::_('September'));
 		$birthMonthList[] = JHtml::_('select.option', 'October', JText::_('October'));
 		$birthMonthList[] = JHtml::_('select.option', 'November', JText::_('November'));
@@ -79,6 +79,27 @@ class smfViewChildList extends JViewLegacy
 		$birthDaylist[] = JHtml::_('select.option', '8', JText::_('8'));
 		$birthDaylist[] = JHtml::_('select.option', '9', JText::_('9'));
 		$birthDaylist[] = JHtml::_('select.option', '10', JText::_('10'));
+		$birthDaylist[] = JHtml::_('select.option', '11', JText::_('11'));
+		$birthDaylist[] = JHtml::_('select.option', '12', JText::_('12'));
+		$birthDaylist[] = JHtml::_('select.option', '13', JText::_('13'));
+		$birthDaylist[] = JHtml::_('select.option', '14', JText::_('14'));
+		$birthDaylist[] = JHtml::_('select.option', '15', JText::_('15'));
+		$birthDaylist[] = JHtml::_('select.option', '16', JText::_('16'));
+		$birthDaylist[] = JHtml::_('select.option', '17', JText::_('17'));
+		$birthDaylist[] = JHtml::_('select.option', '18', JText::_('18'));
+		$birthDaylist[] = JHtml::_('select.option', '19', JText::_('19'));
+		$birthDaylist[] = JHtml::_('select.option', '20', JText::_('20'));
+		$birthDaylist[] = JHtml::_('select.option', '21', JText::_('21'));
+		$birthDaylist[] = JHtml::_('select.option', '22', JText::_('22'));
+		$birthDaylist[] = JHtml::_('select.option', '23', JText::_('23'));
+		$birthDaylist[] = JHtml::_('select.option', '24', JText::_('24'));
+		$birthDaylist[] = JHtml::_('select.option', '25', JText::_('25'));
+		$birthDaylist[] = JHtml::_('select.option', '26', JText::_('26'));
+		$birthDaylist[] = JHtml::_('select.option', '27', JText::_('27'));
+		$birthDaylist[] = JHtml::_('select.option', '28', JText::_('28'));
+		$birthDaylist[] = JHtml::_('select.option', '29', JText::_('29'));
+		$birthDaylist[] = JHtml::_('select.option', '30', JText::_('30'));
+		$birthDaylist[] = JHtml::_('select.option', '32', JText::_('31'));
 
 		//$lists             = array();
 		$lists['birthDay'] = JHtml::_('select.genericlist', $birthDaylist, 'birthDay', 'class="inputbox"', 'value', 'text', $state->get('birthDay'));
