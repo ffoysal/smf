@@ -26,7 +26,7 @@
   <option value="Female">Female</option>
 </field>
 
-<field name="birth_date" type="calendar" label="COM_SMF_BIRTHDATE" description="" format="%Y-%m-%d" required="true"/>
+<field name="birth_date" type="calendar" label="COM_SMF_BIRTHDATE" description="" format="%m-%d-%Y" required="true"/>
 
 <field name="country" type="list" default="Bangladesh" label="COM_SMF_COUNTRY" description="">
   <option value="Bangladesh">Bangladesh</option>
