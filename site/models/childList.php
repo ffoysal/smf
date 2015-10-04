@@ -63,10 +63,6 @@ class SmfModelChildList extends JModelLegacy
 		$birthDay = $app->input->get('birthDay', $params->get('birthDay', 'Please Select'), 'uint');
 		$age = $app->input->get('age', $params->get('age', 'Please Select'), 'uint');
 		$this->setSearch($gender, $match, $country, $birthMonth, $birthDay, $age);
-
-		// Set the search areas
-		//$areas = $app->input->get('areas', null, 'array');
-		//$this->setAreas($areas);
 	}
 
 	/**
@@ -82,12 +78,6 @@ class SmfModelChildList extends JModelLegacy
 	 */
 	public function setSearch($gender, $match = 'Male', $country = 'Bangladesh', $birthMonth='January', $birthDay=1, $age=1)
 	{
-		//if (isset($gender))
-		//{
-			//$this->setState('origkeyword', $gender);
-			//$this->setState('gender', $gender);
-		//}
-
 		if (isset($match))
 		{
 			$this->setState('match', $match);
@@ -120,41 +110,11 @@ class SmfModelChildList extends JModelLegacy
 	public function getData()
 	{
 		// Lets load the content if it doesn't already exist
-		/*if (empty($this->_data))
-		{
-			//$areas = $this->getAreas();
-
-			//JPluginHelper::importPlugin('search');
-			//$dispatcher = JEventDispatcher::getInstance();
-			$results = $this->getResults($this->getState('keyword'));
-			$this->_data = $results;
-			$this->_total = count($results);
-		}
-		return $this->_data;*/
-		// Lets load the content if it doesn't already exist
 		if (empty($this->_data))
 		{
-			//$areas = $this->getAreas();
-
-			//JPluginHelper::importPlugin('search');
-			//$dispatcher = JEventDispatcher::getInstance();
-			//$results = $dispatcher->trigger('onContentSearch', array(
-			//	$this->getState('gender'),
-			//	$this->getState('match'),
-			//	$this->getState('country'),
-			//	$areas['active'])
-			//);
 			$results = $this->getResults($this->getState('match'), $this->getState('country'), $this->getState('birthMonth'), $this->getState('birthDay'), $this->getState('age'));
-			//$rows = array();
-
-			//foreach ($results as $result)
-			//{
-			//	$rows = array_merge((array) $rows, (array) $result);
-			//}
 
 			$this->_total = count($results);
-			print_r('total');
-			print_r($this->_total);
 
 			if ($this->getState('limit') > 0)
 			{
@@ -215,10 +175,8 @@ class SmfModelChildList extends JModelLegacy
 	 */
 	public function getResults($gender, $country, $birthMonth, $birthDay, $age)
 	{
-		//require_once JPATH_SITE . '/components/com_contact/helpers/route.php';
 		$db = JFactory::getDbo();
-		//$whereClause = $db->quoteName('country') . " LIKE " . $db->quote($country . '%') . 'AND' .
-		//	$db->quoteName('gender') . " = " . $db->quote($gender );
+
 		$whrClause = $this->buildWhereClause($gender, $country, $birthMonth, $birthDay, $age, $db);
 		$query = $db->getQuery(true);
 		$query->select('*');
@@ -226,19 +184,6 @@ class SmfModelChildList extends JModelLegacy
 		if($whrClause) {
 			$query->where($whrClause);
 		}
-		print_r("Day");
-		print_r($birthDay);
-		print_r("Month");
-		print_r($birthMonth);
-		print_r("Age");
-		print_r($age);
-		//$query->where('(first_name LIKE ' . $firstName . ')');
-				//OR a.misc LIKE ' . $text . ' OR a.con_position LIKE ' . $text
-					//. ' OR a.address LIKE ' . $text . ' OR a.suburb LIKE ' . $text . ' OR a.state LIKE ' . $text
-					//. ' OR a.country LIKE ' . $text . ' OR a.postcode LIKE ' . $text . ' OR a.telephone LIKE ' . $text
-					//. ' OR a.fax LIKE ' . $text . ') AND a.published IN (' . implode(',', $state) . ') AND c.published=1 '
-					//. ' AND a.access IN (' . $groups . ') AND c.access IN (' . $groups . ')'
-			//)
 			
 		$db->setQuery($query, 0, '');
 
@@ -278,27 +223,26 @@ class SmfModelChildList extends JModelLegacy
 			$whereClause = $db->quoteName('country') . " LIKE " . $db->quote($country . '%');	
 			$andString = " AND ";
 		}
+		
 		if($gender != '') {
 			$whereClause = $whereClause . $andString . $db->quoteName('gender') . " = " . $db->quote($gender );
 			$andString = " AND ";
 		}
 		$monthStr = $this->getMonthInt($birthMonth);
-		print_r("expression" . $monthStr);
+
 		if($monthStr != 0) {
 			$whereClause = $whereClause . $andString . $db->quoteName('birth_month') . " = " . $db->quote($monthStr );
 			$andString = " AND ";
 		}
+		
 		if($birthDay != 'Please Select') {
 			$whereClause = $whereClause . $andString . $db->quoteName('birth_day') . " = " . $db->quote($birthDay );
 			$andString = " AND ";
 		}
+		
 		if($age != 'Please Select') {
 			$whereClause = $whereClause . $andString . $db->quoteName('birth_year') . " = " . $db->quote($curYear - $age);
 		}
-		print_r("curYear");
-		print_r($curYear);
-		print_r("Where Caluse");
-		print_r($whereClause);
 		return $whereClause;
 	}
 /**

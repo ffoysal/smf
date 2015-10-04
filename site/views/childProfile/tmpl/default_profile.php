@@ -8,10 +8,17 @@
  */
 
 defined('_JEXEC') or die;
+
+$doc = JFactory::getDocument();
+	$doc->addStyleSheet( 'templates/protostar/css/bootstrap.min.css' );
+	$doc->addStyleSheet( 'templates/protostar/css/custom.css' );
+	$doc->addScript('templates/protostar/js/bootstrap.min.js', 'text/javascript');
+	$doc->addScript('templates/protostar/js/custom.js', 'text/javascript');
+
 ?>
-<hr>
-<div class="search-result">
-	<?php foreach ($this->results as $result) : ?>
+<div class="search-result top-border-style">
+	<!--table-->
+	<?php foreach ($this->profiles as $result) : ?>
 		<div class="row">
     		<div class="col-md-4" style="padding:20px;border-right:1px solid #eee;">
            		<img src="<?php echo $this->escape($result->image_url);?>" class="img-thumbnail" alt="Cinque Terre" width="250" height="180">
@@ -19,7 +26,7 @@ defined('_JEXEC') or die;
 	    	<div class="col-md-8">
 	      		<div class="row">
 	        		<div class="col-md-8 span12">
-	           			<h2>Meet <a href="<?php echo JRoute::_('index.php?option=com_smf&task=profile&id='. $result->id);?>" target="_blank"><?php echo $this->escape($result->first_name);?></a> in <?php echo $this->escape($result->country);?></h2> 
+	           			<h2>Meet <a href="<?php echo JRoute::_('index.php?option=com_smf&task=search');?>" target="_blank"><?php echo $this->escape($result->first_name);?></a> in <?php echo $this->escape($result->country);?></h2> 
 	        		</div>
 	      		</div>
 			    <div class="row">
@@ -47,7 +54,3 @@ defined('_JEXEC') or die;
   		</div>
   		<hr>
     <?php endforeach; ?>
-</div>
-<div class="pagination">
-	<?php echo $this->pagination->getPagesLinks(); ?>
-</div>

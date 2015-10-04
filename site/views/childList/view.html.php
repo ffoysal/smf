@@ -30,9 +30,7 @@ class smfViewChildList extends JViewLegacy
 		$total   = 0;
 
 		// Get some data from the model
-		//$areas      = $this->get('areas');
 		$state      = $this->get('state');
-		//$gender = $state->get('gender');
 		$params     = $app->getParams();
 
 		// Built select country lists
@@ -62,7 +60,6 @@ class smfViewChildList extends JViewLegacy
 		$birthMonthList[] = JHtml::_('select.option', 'November', JText::_('November'));
 		$birthMonthList[] = JHtml::_('select.option', 'December', JText::_('December'));
 
-		//$lists             = array();
 		$lists['birthMonth'] = JHtml::_('select.genericlist', $birthMonthList, 'birthMonth', 'class="inputbox"', 'value', 'text', $state->get('birthMonth'));
 
 		
@@ -101,7 +98,6 @@ class smfViewChildList extends JViewLegacy
 		$birthDaylist[] = JHtml::_('select.option', '30', JText::_('30'));
 		$birthDaylist[] = JHtml::_('select.option', '32', JText::_('31'));
 
-		//$lists             = array();
 		$lists['birthDay'] = JHtml::_('select.genericlist', $birthDaylist, 'birthDay', 'class="inputbox"', 'value', 'text', $state->get('birthDay'));
 		
 		// Built select country lists
@@ -118,7 +114,6 @@ class smfViewChildList extends JViewLegacy
 		$ageList[] = JHtml::_('select.option', '9', JText::_('9'));
 		$ageList[] = JHtml::_('select.option', '10', JText::_('10'));
 
-		//$lists             = array();
 		$lists['age'] = JHtml::_('select.genericlist', $ageList, 'age', 'class="inputbox"', 'value', 'text', $state->get('age'));
 
 		$genderList        = array();
@@ -126,40 +121,16 @@ class smfViewChildList extends JViewLegacy
 		$genderList[]       = JHtml::_('select.option', 'Female', JText::_('COM_SMF_FEMALE'));
 		$lists['gender'] = JHtml::_('select.radiolistInline', $genderList, 'gender', '', 'value', 'text', $state->get('match'));
 
-		// Log the search
-		//JSearchHelper::logSearch($gender, 'com_smf');
-
 		// Limit searchword
 		$lang        = JFactory::getLanguage();
 		$upper_limit = $lang->getUpperLimitSearchWord();
 		$lower_limit = $lang->getLowerLimitSearchWord();
-
-		/*if (SearchHelper::limitSearchWord($gender))
-		{
-			$error = JText::sprintf('COM_SEARCH_ERROR_SEARCH_MESSAGE', $lower_limit, $upper_limit);
-		}
-
-		// Sanitise searchword
-		if (SearchHelper::santiseSearchWord($gender, $state->get('match')))
-		{
-			$error = JText::_('COM_SEARCH_ERROR_IGNOREKEYWORD');
-		}*/
-
-		//if (!$gender && !empty($this->input) && count($this->input->post))
-		//{
-			// $error = JText::_('COM_SEARCH_ERROR_ENTERKEYWORD');
-		//}
-
-		// Put the filtered results back into the model
-		// for next release, the checks should be done in the model perhaps...
-		//$state->set('keyword', $gender);
 
 		if ($error == null)
 		{
 			$results    = $this->get('data');
 			$total      = $this->get('total');
 			$pagination      = $this->get('pagination');
-			//echo $total;
 		}
 
 		// Check for layout override
@@ -180,10 +151,7 @@ class smfViewChildList extends JViewLegacy
 		$this->birthDay      = $state->get('birthDay');
 		$this->birthMonth      = $state->get('birthMonth');
 		$this->age      = $state->get('age');
-		//$this->gender     = $gender;
-		//$this->origkeyword   = $state->get('origkeyword');
 		$this->gender  = $state->get('match');
-		//$this->searchareas   = $areas;
 		$this->total         = $total;
 		$this->error         = $error;
 		$this->action        = $uri;

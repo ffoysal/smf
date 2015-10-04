@@ -22,6 +22,19 @@ class SmfController extends JControllerLegacy
 
 		return parent::display($cachable, $urlparams);
 	}
+/**
+	 * Method to display profile view.
+	 *
+	 * @return  JControllerLegacy This object to support chaining.
+	 *
+	 * @since   1.5
+	 */
+	public function profile() {
+
+		$this->input->set('view', 'childProfile');
+
+		return parent::display();
+	}
 
 	/**
 	 * Search
@@ -32,21 +45,6 @@ class SmfController extends JControllerLegacy
 	 */
 	public function search()
 	{
-		// Slashes cause errors, <> get stripped anyway later on. # causes problems.
-		//$badchars = array('#', '>', '<', '\\');
-		//$gender = trim(str_replace($badchars, '', $this->input->getString('gender', null, 'post')));
-
-		// If searchword enclosed in double quotes, strip quotes and do exact match
-		/*if (substr($gender, 0, 1) == '"' && substr($gender, -1) == '"')
-		{
-			$post['gender'] = substr($gender, 1, -1);
-			$this->input->set('searchphrase', 'exact');
-		}
-		else
-		{
-			$post['gender'] = $gender;
-		}*/
-		print_r("expression" . $this->input->getWord('country', null, 'post'));
 		if($this->input->getWord('country', null, 'post') != 'Please Select') {
 			$post['country']     = $this->input->getWord('country', null, 'post');
 		}
@@ -75,37 +73,6 @@ class SmfController extends JControllerLegacy
 		if ($post['limit'] === null)
 		{
 			unset($post['limit']);
-		}
-
-		/*$areas = $this->input->post->get('areas', null, 'array');
-
-		if ($areas)
-		{
-			foreach ($areas as $area)
-			{
-				$post['areas'][] = JFilterInput::getInstance()->clean($area, 'cmd');
-			}
-		}*/
-
-		// The Itemid from the request, we will use this if it's a search page or if there is no search page available
-		$post['Itemid'] = $this->input->getInt('Itemid');
-
-		// Set Itemid id for links from menu
-		$app  = JFactory::getApplication();
-		$menu = $app->getMenu();
-		$item = $menu->getItem($post['Itemid']);
-
-		// The request Item is not a search page so we need to find one
-		if ($item->component != 'com_smf' || $item->query['view'] != 'childList')
-		{
-			// Get item based on component, not link. link is not reliable.
-			$item = $menu->getItems('component', 'com_smf', true);
-
-			// If we found a search page, use that.
-			if (!empty($item))
-			{
-				$post['Itemid'] = $item->id;
-			}
 		}
 
 		unset($post['task']);
