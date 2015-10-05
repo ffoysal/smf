@@ -14,6 +14,7 @@ CREATE TABLE `#__smf_child_data` (
 	`birth_day`       INT(2),
 	`birth_month`       INT(2),
 	`birth_year`       INT(4),
+	`student_id` VARCHAR(50) NOT NULL,
 	PRIMARY KEY (`id`)
 )
 	ENGINE =MyISAM
