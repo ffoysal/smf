@@ -18,7 +18,7 @@ class SmfController extends JControllerLegacy
 	public function display($cachable = false, $urlparams = false)
 	{
 		// Force it to be the search view
-		$this->input->set('view', 'childList');
+		$this->input->set('view', 'childlist');
 
 		return parent::display($cachable, $urlparams);
 	}
@@ -31,7 +31,7 @@ class SmfController extends JControllerLegacy
 	 */
 	public function profile() {
 
-		$this->input->set('view', 'childProfile');
+		$this->input->set('view', 'childprofile');
 
 		return parent::display();
 	}

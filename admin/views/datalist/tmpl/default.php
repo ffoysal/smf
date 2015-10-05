@@ -70,7 +70,7 @@ defined('_JEXEC') or die('Restricted Access');
 							<?php echo $row->gender; ?>
 						</td>
 						<td >
-							<?php echo $row->birth_date; ?>
+							<?php $d = strtotime($row->birth_date); echo date('m-d-Y',$d); ?>
 						</td>
 						<td >
 							<?php echo $row->country; ?>

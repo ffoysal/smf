@@ -8,7 +8,7 @@ defined('_JEXEC') or die('Restricted access');
  *
  * @since  0.0.1
  */
-class smfViewChildProfile extends JViewLegacy
+class smfViewChildprofile extends JViewLegacy
 {
 	/**
 	 * Display the SMF view

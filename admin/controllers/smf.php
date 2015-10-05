@@ -18,7 +18,11 @@ class SmfControllerSmf extends JControllerForm
  // Call automatically by joomla
 	public function save(){
 		$data  = $this->input->post->get('jform', array(), 'array');		
-		$date = new JDate($data['birth_date']);
+		
+		$d = DateTime::createFromFormat('m-d-Y', $data['birth_date']);
+		$date = new JDate($d->format('Y-m-d'));
+		$data['birth_date'] = $d->format('Y-m-d');
+
 		$data['birth_day'] =$date->day;
 		$data['birth_month'] =$date->month;
 		$data['birth_year'] =$date->year;
