@@ -7006,7 +7006,7 @@ body.site.fluid {
 }
 .header {
 	margin-bottom: 10px;
-	background-image: url('../../../images/smf/Bannerimage.png');
+	background-image: url('../../../components/com_smf/assets/images/Bannerimage.png');
 	background-repeat: no-repeat;
 	height: 136px;
 	width: 900px;

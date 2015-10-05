@@ -1,0 +1,55 @@
+.top-border-style {
+	background-color: #eee;
+	height:5px;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+}
+.header-inner {
+	display: none;
+}
+
+.smf-profile-img-style {
+	padding:50px 20px 20px 20px;
+	/*border-right:1px solid #eee;*/
+}
+
+.smf-border-left {
+	border-left: 1px solid #eee;
+}
+.smf-donate-now-align {
+	text-align: right;
+}
+
+.smf-button-width {
+	width: 200px;
+}
+.smf-listing-image-style {
+	padding:20px;
+	border-right:1px solid #eee;
+	height:100px;
+	width: 100px;
+}
+.smf-paypal-button-position {
+	position: absolute;
+	left: 660px;
+	top: 20px;
+	margin-left: 20px;
+	border-left: 1px solid #eee;
+}
+.smf-search-button-style {
+	padding:13px 0px 0px 26px;
+}
+.smf-paypal-button-position-general {
+	position: absolute;
+	left: 890px;
+	top: 40px;
+	margin-left: 20px;
+	/*border-left: 1px solid #eee;*/
+}
+.smf-social-button-position-general {
+	width: 126px; 
+	left: 750px; 
+	position: absolute; 
+	top: 58px; 
+	height: 38px;
+}
