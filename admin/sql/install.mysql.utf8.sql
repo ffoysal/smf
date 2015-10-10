@@ -18,7 +18,7 @@ CREATE TABLE `#__smf_child_data` (
 	`video_code` VARCHAR(250),
 	`chores_work` VARCHAR(250),	
 	`education` VARCHAR(50),
-	`bobbies` VARCHAR(100),
+	`hobbies` VARCHAR(100),
 	`favourite_game` VARCHAR(100),
 	`dream` VARCHAR(100),
 	PRIMARY KEY (`id`)
