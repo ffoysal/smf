@@ -15,6 +15,9 @@ defined('_JEXEC') or die('Restricted Access');
 				<?php echo JHtml::_('grid.checkall'); ?>
 			</th>
 			<th >
+				<?php echo JText::_('COM_SMF_STUDENT_ID') ;?>
+			</th>
+			<th >
 				<?php echo JText::_('COM_SMF_FIRST_NAME') ;?>
 			</th>
 			<th >
@@ -35,27 +38,27 @@ defined('_JEXEC') or die('Restricted Access');
 			<th >
 				<?php echo JText::_('COM_SMF_SHOW_IN_SITE'); ?>
 			</th>
-			<th>
+			<th width="20%">
 				<?php echo JText::_('COM_SMF_MY_STORY'); ?>
 			</th>
-			<th>
+			<!--th width="5%">
 				<?php echo JText::_('COM_SMF_CHILD_VIDEO_CODE'); ?>
 			</th>
-			<th>
+			<th width="5%">
 				<?php echo JText::_('COM_SMF_CHILD_CHORES_WORK'); ?>
 			</th>
-			<th>
+			<th width="5%">
 				<?php echo JText::_('COM_SMF_CHILD_EDUCATION'); ?>
 			</th>
-			<th>
+			<th width="5%">
 				<?php echo JText::_('COM_SMF_CHILD_HOBBIES'); ?>
 			</th>
-			<th>
+			<th width="5%">
 				<?php echo JText::_('COM_SMF_CHILD_FAVOURITE_GAME'); ?>
 			</th>
-			<th>
+			<th width="5%">
 				<?php echo JText::_('COM_SMF_CHILD_DREAM'); ?>
-			</th>
+			</th -->
 
 		</tr>
 		</thead>
@@ -75,6 +78,11 @@ defined('_JEXEC') or die('Restricted Access');
 					<tr>
 						<td>
 							<?php echo JHtml::_('grid.id', $i, $row->id); ?>
+						</td>
+						<td>
+							<a href="<?php echo $link; ?>" title="<?php echo JText::_('COM_SMF_EDIT_RECORD'); ?>">						
+								<?php echo $row->student_id; ?>
+							</a>	
 						</td>
 						<td>
 							<a href="<?php echo $link; ?>" title="<?php echo JText::_('COM_SMF_EDIT_RECORD'); ?>">						
@@ -102,7 +110,7 @@ defined('_JEXEC') or die('Restricted Access');
 						<td >
 							<?php echo $row->my_story; ?>
 						</td>
-						<td >
+						<!-- td >
 							<?php echo $row->video_code; ?>
 						</td>
 						<td >
@@ -119,7 +127,7 @@ defined('_JEXEC') or die('Restricted Access');
 						</td>
 						<td >
 							<?php echo $row->dream; ?>
-						</td>
+						</td -->
 						
 					</tr>
 				<?php endforeach; ?>
