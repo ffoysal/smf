@@ -9,12 +9,6 @@
 
 defined('_JEXEC') or die;
 
-$doc = JFactory::getDocument();
-	$doc->addStyleSheet( 'templates/protostar/css/bootstrap.min.css' );
-	$doc->addStyleSheet( 'components/com_smf/assets/includes/styles/custom.css' );
-	$doc->addScript('components/com_smf/assets/includes/javascripts/custom.js', 'text/javascript');
-	$doc->addScript('templates/protostar/js/bootstrap.min.js', 'text/javascript');
-
 ?>
 <div class="search-result top-border-style">
 	<!--table-->
@@ -26,15 +20,15 @@ $doc = JFactory::getDocument();
 	    	<div class="col-md-8 span8">
 	      		<div class="row">
 	        		<div class="col-md-12 span12">
-	           			<h1>Experience the true happiness of life</h1> 
+	           			<h2>Experience the true happiness of life</h2> 
 	        		</div>
 	      		</div>
 			    <div class="row smf-border-left">
 			    	<div class="col-md-12 span12">
-		    			<h2>About 
+		    			<h3>About 
 		    				<?php echo $this->escape($result->first_name);?> 
 		    				<?php echo $this->escape($result->last_name);?>:
-		    			</h2>
+		    			</h3>
 				    </div>
 				</div>
 		    	<div class="row smf-border-left">
@@ -44,7 +38,7 @@ $doc = JFactory::getDocument();
 		    					<strong><?php echo JText::_('COM_SMF_NAME');?></strong> 
 	    					</div>
 	    					<div class="col-md-6 span6">
-	    						<?php if (empty($this->escape($result->first_name)) || empty($this->escape($result->last_name))) : ?>
+	    						<?php if ($this->escape($result->first_name)===NULL || $this->escape($result->last_name)===NULL) : ?>
 	    							<?php echo JText::_('COM_SMF_NA');?>
 	    						<?php else:?>
 	    							<?php echo $this->escape($result->first_name);?> <?php echo $this->escape($result->last_name);?>
@@ -56,7 +50,7 @@ $doc = JFactory::getDocument();
 		    					<strong><?php echo JText::_('COM_SMF_GENDER');?></strong>
 	    					</div>
 	    					<div class="col-md-6 span6">
-	    						<?php if (empty($this->escape($result->gender))) : ?>
+	    						<?php if ($this->escape($result->gender)===NULL) : ?>
 	    							<?php echo JText::_('COM_SMF_NA');?>
 	    						<?php else:?>
 		    						<?php echo $this->escape($result->gender);?>
@@ -68,7 +62,7 @@ $doc = JFactory::getDocument();
 		    					<strong><?php echo JText::_('COM_SMF_BIRTHDAY');?></strong>
 	    					</div>
 	    					<div class="col-md-6 span6">
-	    						<?php if (empty($this->escape($result->birth_date))) : ?>
+	    						<?php if ($this->escape($result->birth_date)===NULL) : ?>
 	    							<?php echo JText::_('COM_SMF_NA');?>
 	    						<?php else:?>
 		    						<?php echo $this->escape($result->birth_date);?>
@@ -80,7 +74,7 @@ $doc = JFactory::getDocument();
 		    					<strong><?php echo JText::_('COM_SMF_COUNTRY');?></strong>
 	    					</div>
 	    					<div class="col-md-6 span6">
-	    						<?php if (empty($this->escape($result->country))) : ?>
+	    						<?php if ($this->escape($result->country)===NULL) : ?>
 	    							<?php echo JText::_('COM_SMF_NA');?>
 	    						<?php else:?>
 	    							<?php echo $this->escape($result->country);?>
@@ -92,11 +86,11 @@ $doc = JFactory::getDocument();
 		    					<strong><?php echo JText::_('COM_SMF_CHORES');?></strong>
 	    					</div>
 	    					<div class="col-md-6 span6">
-	    						<!--?php if (empty($this->escape($result->chores))) : ?-->
+	    						<?php if ($this->escape($result->chores_work)===NULL) : ?>
 	    							<?php echo JText::_('COM_SMF_NA');?>
-	    						<!--?php else:?-->
-		    						<!--?php echo $this->escape($result->chores);?-->
-		    					<!--?php endif; ?-->
+	    						<?php else:?>
+		    						<?php echo $this->escape($result->chores_work);?>
+		    					<?php endif; ?>
 	    					</div>
 	    				</div>
 	    				<div class="row">
@@ -104,11 +98,11 @@ $doc = JFactory::getDocument();
 		    					<strong><?php echo JText::_('COM_SMF_EDUCATION');?></strong>
 	    					</div>
 	    					<div class="col-md-6 span6">
-	    						<!--?php if (empty($this->escape($result->education))) : ?-->
+	    						<?php if ($this->escape($result->education)===NULL) : ?>
 	    							<?php echo JText::_('COM_SMF_NA');?>
-	    						<!--?php else:?-->
-		    						<!--?php echo $this->escape($result->education);?-->
-		    					<!--?php endif; ?-->
+	    						<?php else:?>
+		    						<?php echo $this->escape($result->education);?>
+		    					<?php endif; ?>
 	    					</div>
 	    				</div>
 	    				<div class="row">
@@ -116,11 +110,11 @@ $doc = JFactory::getDocument();
 		    					<strong><?php echo JText::_('COM_SMF_HOBBIES');?></strong>
 	    					</div>
 	    					<div class="col-md-6 span6">
-		    					<!--?php if (empty($this->escape($result->hobbies))) : ?-->
+		    					<?php if ($this->escape($result->hobbies)===NULL) : ?>
 	    							<?php echo JText::_('COM_SMF_NA');?>
-	    						<!--?php else:?-->
-		    						<!--?php echo $this->escape($result->hobbies);?-->
-		    					<!--?php endif; ?-->
+	    						<?php else:?>
+		    						<?php echo $this->escape($result->hobbies);?>
+		    					<?php endif; ?>
 	    					</div>
 	    				</div>
 	    				<div class="row">
@@ -128,11 +122,11 @@ $doc = JFactory::getDocument();
 		    					<strong><?php echo JText::_('COM_SMF_FAV_GAME');?></strong>
 	    					</div>
 	    					<div class="col-md-6 span6">
-		    					<!--?php if (empty($this->escape($result->fav_game))) : ?-->
+		    					<?php if ($this->escape($result->favourite_game)===NULL) : ?>
 	    							<?php echo JText::_('COM_SMF_NA');?>
-	    						<!--?php else:?-->
-		    						<!--?php echo $this->escape($result->fav_game);?-->
-		    					<!--?php endif; ?-->
+	    						<?php else:?>
+		    						<?php echo $this->escape($result->favourite_game);?>
+		    					<?php endif; ?>
 	    					</div>
 	    				</div>
 	    				<div class="row">
@@ -140,17 +134,17 @@ $doc = JFactory::getDocument();
 		    					<strong><?php echo JText::_('COM_SMF_DREAM');?></strong>
 	    					</div>
 	    					<div class="col-md-6 span6">
-		    					<!--?php if (empty($this->escape($result->dream))) : ?-->
+		    					<?php if ($this->escape($result->dream)===NULL) : ?>
 	    							<?php echo JText::_('COM_SMF_NA');?>
-	    						<!--?php else:?-->
-		    						<!--?php echo $this->escape($result->dream);?-->
-		    					<!--?php endif; ?-->
+	    						<?php else:?>
+		    						<?php echo $this->escape($result->dream);?>
+		    					<?php endif; ?>
 	    					</div>
 	    				</div>
 		    		</div>
 		        	<div class="col-md-8 span8">
 		        		<div class="row">
-		        			<h3><?php echo $this->escape($result->first_name);?> <?php echo $this->escape($result->last_name);?> is <?php echo (date('Y') - $this->escape($result->birth_year));?> years old and lives in <?php echo $this->escape($result->country);?>.</h3>
+		        			<h4><?php echo $this->escape($result->first_name);?> <?php echo $this->escape($result->last_name);?> is <?php echo (date('Y') - $this->escape($result->birth_year));?> years old and lives in <?php echo $this->escape($result->country);?>.</h4>
 		        		</div>
 		        		<div class="row">
 		        			<?php echo $this->escape($result->my_story);?>

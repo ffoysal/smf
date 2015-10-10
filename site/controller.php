@@ -54,6 +54,10 @@ class SmfController extends JControllerLegacy
 		$post['gender'] = $this->input->getWord('gender', null, 'post');
 		$post['limit']        = $this->input->getUInt('limit', null, 'post');
 
+		if ($post['gender'] === 'Please Select' || $post['gender'] === 'PleaseSelect' )
+		{
+			unset($post['gender']);
+		}
 		if ($post['country'] === 'Please Select' || $post['country'] === 'PleaseSelect' )
 		{
 			unset($post['country']);

@@ -110,7 +110,7 @@ class SmfModelChildList extends JModelLegacy
 	public function getData()
 	{
 		// Lets load the content if it doesn't already exist
-		if (empty($this->_data))
+		if ($this->_data===NULL)
 		{
 			$results = $this->getResults($this->getState('match'), $this->getState('country'), $this->getState('birthMonth'), $this->getState('birthDay'), $this->getState('age'));
 
@@ -150,7 +150,7 @@ class SmfModelChildList extends JModelLegacy
 	public function getPagination()
 	{
 		// Lets load the content if it doesn't already exist
-		if (empty($this->_pagination))
+		if ($this->_pagination===NULL)
 		{
 			$this->_pagination = new JPagination($this->getTotal(), $this->getState('limitstart'), $this->getState('limit'));
 		}

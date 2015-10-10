@@ -12,14 +12,14 @@ defined('_JEXEC') or die;
 <hr>
 <div class="search-result">
 	<?php foreach ($this->results as $result) : ?>
-		<div class="row">
+		<div class="row smf-div-hover">
     		<div class="col-md-2 smf-listing-image-style">
            		<img src="<?php echo $this->escape($result->image_url);?>" class="img-thumbnail" alt="Cinque Terre" width="250" height="180">
     		</div>
 	    	<div class="col-md-10">
 	      		<div class="row">
 	        		<div class="col-md-12 span12">
-	           			<h2>Meet <a href="<?php echo JRoute::_('index.php?option=com_smf&task=profile&id='. $result->id);?>" target="_blank"><?php echo $this->escape($result->first_name);?></a> in <?php echo $this->escape($result->country);?></h2> 
+	           			<h3>Meet <a href="<?php echo JRoute::_('index.php?option=com_smf&task=profile&id='. $result->id);?>" target="_blank"><?php echo $this->escape($result->first_name);?></a> in <?php echo $this->escape($result->country);?></h3> 
 	        		</div>
 	      		</div>
 			    <div class="row">
@@ -27,8 +27,8 @@ defined('_JEXEC') or die;
 				    	<strong>Name: </strong> <?php echo $this->escape($result->first_name);?>    &nbsp;&nbsp;|&nbsp;&nbsp;
 				    	<strong>Gender: </strong> <?php echo $this->escape($result->gender);?>      &nbsp;&nbsp;|&nbsp;&nbsp;
 				        <strong>Home: </strong> <?php echo $this->escape($result->country);?>       &nbsp;&nbsp;|&nbsp;&nbsp;
-				        <a href="<?php echo JRoute::_('index.php?option=com_smf&task=profile&id='. $result->id);?>" target="_blank"><span class="icon-book"></span> Read my story</a>                &nbsp;&nbsp;|&nbsp;&nbsp;
-				        <a href=""><span class="icon-video"></span> Watch my video</a>
+				        <a href="<?php echo JRoute::_('index.php?option=com_smf&task=profile&id='. $result->id);?>" target="_blank"><span class="glyphicon glyphicon-book"></span> Read my story</a>                &nbsp;&nbsp;|&nbsp;&nbsp;
+				        <a href="<?php echo JRoute::_('index.php?option=com_smf&task=profile&id='. $result->id);?>" target="_blank"><span class="glyphicon glyphicon-facetime-video"></span> Watch my video</a>
 				   	</div>
 				   	<!--div class="col-md-3 span3"> <a href=""><span class="icon-book"></span> Read my story</a></div> &nbsp;&nbsp;|&nbsp;&nbsp;
 			        <div class="col-md-3 span3"><a href=""><span class="icon-video"></span> Watch my video</a></div-->
