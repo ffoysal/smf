@@ -17,10 +17,10 @@ CREATE TABLE `#__smf_child_data` (
 	`student_id` VARCHAR(50) NOT NULL,
 	`video_code` VARCHAR(250),
 	`chores_work` VARCHAR(250),	
-	`education` VARCHAR(50),
-	`hobbies` VARCHAR(100),
-	`favourite_game` VARCHAR(100),
-	`dream` VARCHAR(100),
+	`education` VARCHAR(250),
+	`hobbies` VARCHAR(250),
+	`favourite_game` VARCHAR(250),
+	`dream` VARCHAR(250),
 	PRIMARY KEY (`id`)
 )
 	ENGINE =MyISAM

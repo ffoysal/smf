@@ -67,5 +67,12 @@
 		<field name="birth_month" type="hidden" />					
 		<field name="birth_year" type="hidden" />	
 	<!-- END -->
+	<field name="video_code" type="textarea" default="" label="COM_SMF_CHILD_VIDEO_CODE" description="" rows="2" filter="raw"/>
+	<field name="chores_work" type="textarea" default="" label="COM_SMF_CHILD_CHORES_WORK" description="" rows="2" filter="raw"/>
+	<field name="education" type="textarea" default="" label="COM_SMF_CHILD_EDUCATION" description="" rows="2" filter="raw"/>
+	<field name="hobbies" type="textarea" default="" label="COM_SMF_CHILD_HOBBIES" description="" rows="2" filter="raw"/>
+	<field name="favourite_game" type="textarea" default="" label="COM_SMF_CHILD_FAVOURITE_GAME" description="" rows="2" filter="raw"/>
+	<field name="dream" type="textarea" default="" label="COM_SMF_CHILD_DREAM" description="" rows="2" filter="raw"/>
+	
 </fieldset>
 </form>

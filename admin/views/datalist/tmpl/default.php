@@ -35,15 +35,33 @@ defined('_JEXEC') or die('Restricted Access');
 			<th >
 				<?php echo JText::_('COM_SMF_SHOW_IN_SITE'); ?>
 			</th>
-			<th width="20%">
+			<th>
 				<?php echo JText::_('COM_SMF_MY_STORY'); ?>
+			</th>
+			<th>
+				<?php echo JText::_('COM_SMF_CHILD_VIDEO_CODE'); ?>
+			</th>
+			<th>
+				<?php echo JText::_('COM_SMF_CHILD_CHORES_WORK'); ?>
+			</th>
+			<th>
+				<?php echo JText::_('COM_SMF_CHILD_EDUCATION'); ?>
+			</th>
+			<th>
+				<?php echo JText::_('COM_SMF_CHILD_HOBBIES'); ?>
+			</th>
+			<th>
+				<?php echo JText::_('COM_SMF_CHILD_FAVOURITE_GAME'); ?>
+			</th>
+			<th>
+				<?php echo JText::_('COM_SMF_CHILD_DREAM'); ?>
 			</th>
 
 		</tr>
 		</thead>
 		<tfoot>
 			<tr>
-				<td colspan="9">
+				<td colspan="15">
 					<?php echo $this->pagination->getListFooter(); ?>
 				</td>
 			</tr>
@@ -83,6 +101,24 @@ defined('_JEXEC') or die('Restricted Access');
 						</td>
 						<td >
 							<?php echo $row->my_story; ?>
+						</td>
+						<td >
+							<?php echo $row->video_code; ?>
+						</td>
+						<td >
+							<?php echo $row->chores_work; ?>
+						</td>
+						<td >
+							<?php echo $row->education; ?>
+						</td>
+						<td >
+							<?php echo $row->hobbies; ?>
+						</td>
+						<td >
+							<?php echo $row->favourite_game; ?>
+						</td>
+						<td >
+							<?php echo $row->dream; ?>
 						</td>
 						
 					</tr>
