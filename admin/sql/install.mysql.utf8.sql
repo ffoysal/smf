@@ -15,7 +15,7 @@ CREATE TABLE `#__smf_child_data` (
 	`birth_month`       INT(2),
 	`birth_year`       INT(4),
 	`student_id` VARCHAR(50) NOT NULL,
-	`video_code` VARCHAR(250),
+	`video_code` VARCHAR(250) default 'https://www.youtube.com/watch?v=k-lxD1r-oTA',
 	`chores_work` VARCHAR(250),	
 	`education` VARCHAR(250),
 	`hobbies` VARCHAR(250),
