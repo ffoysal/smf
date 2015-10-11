@@ -34,12 +34,12 @@ defined('_JEXEC') or die;
 			        <div class="col-md-3 span3"><a href=""><span class="icon-video"></span> Watch my video</a></div-->
 	      		</div> 
 	            <div class="row" >
-	        		<div class="col-md-9 span9 readmore"> 
-	        			<p><?php echo $this->escape($result->my_story);?></p>
-	        		</div>
+	        		<div class="col-md-9 smf-story-ellipsis"> 
+	        			<?php echo $this->escape($result->my_story);?> 
+	        		</div><a href="<?php echo JRoute::_('index.php?option=com_smf&task=profile&id='. $result->id);?>" target="_blank">Read more</a>
 	      		</div>
 			    <div class="row">
-			    	<div class="col-md-4 span4 smf-paypal-button-position">
+			    	<div class="col-md-4 smf-paypal-button-position">
 			          	<div style="width: 171px;height: 80px;" class="s5" data-state="hasContent" id="i478zcpg" data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$SITE_HEADER.1.1.$i478zcpg">
 			          		<div id="i478zcpgiFrameHolder" class="s5iFrameHolder" data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$SITE_HEADER.1.1.$i478zcpg.0">
 			          			<iframe width="100%" style="border:none;" height="93px" src="http://www.sabrinamemorial.org.usrfiles.com/html/4c2bb9_02316a46c772b8c8d485a64b61f62e6e.html" data-reactid=".0.$SITE_ROOT.$desktop_siteRoot.$SITE_HEADER.1.1.$i478zcpg.0.0">
