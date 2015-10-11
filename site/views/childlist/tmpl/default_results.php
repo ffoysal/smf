@@ -19,7 +19,7 @@ defined('_JEXEC') or die;
 	    	<div class="col-md-10">
 	      		<div class="row">
 	        		<div class="col-md-12 span12">
-	           			<h3>Meet <a href="<?php echo JRoute::_('index.php?option=com_smf&task=profile&id='. $result->id);?>" target="_blank"><?php echo $this->escape($result->first_name);?></a> in <?php echo $this->escape($result->country);?></h3> 
+	           			<h4>Meet <a href="<?php echo JRoute::_('index.php?option=com_smf&task=profile&id='. $result->id);?>" target="_blank"><?php echo $this->escape($result->first_name);?></a> in <?php echo $this->escape($result->country);?></h4> 
 	        		</div>
 	      		</div>
 			    <div class="row">
