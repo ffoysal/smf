@@ -42,7 +42,7 @@ class SmfModelDataList extends JModelList
 		if (!empty($search))
 		{
 			$like = $db->quote('%' . $search . '%');
-			$query->where('first_name LIKE ' . $like);
+			$query->where('last_name LIKE ' . $like);
 		}         
  		// Filter by gender
 		$gender = $this->getState('filter.gender');

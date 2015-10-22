@@ -105,7 +105,7 @@ defined('_JEXEC') or die('Restricted Access');
 							<?php echo $row->monthly_sponsorship; ?>
 						</td>
 						<td >
-							<?php echo $row->show_in_site; ?>
+							<?php echo $row->show_in_site == 1 ? 'Yes':'No'; ?>
 						</td>
 						<td >
 							<?php echo $row->my_story; ?>
