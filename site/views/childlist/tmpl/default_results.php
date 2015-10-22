@@ -9,7 +9,7 @@
 
 defined('_JEXEC') or die;
 ?>
-<hr>
+<hr class="smf-horizontal-rule-style">
 <div class="search-result">
 	<?php foreach ($this->results as $result) : ?>
 		<div class="row smf-div-hover">
@@ -26,14 +26,14 @@ defined('_JEXEC') or die;
 			    	<div class="col-md-12 span12">
 				    	<strong>Name: </strong> <?php echo $this->escape($result->first_name);?>    &nbsp;&nbsp;|&nbsp;&nbsp;
 				    	<strong>Gender: </strong> <?php echo $this->escape($result->gender);?>      &nbsp;&nbsp;|&nbsp;&nbsp;
-				        <strong>Home: </strong> <?php echo $this->escape($result->country);?>       &nbsp;&nbsp;|&nbsp;&nbsp;
-				        <a href="<?php echo JRoute::_('index.php?option=com_smf&task=profile&id='. $result->id);?>" target="_blank"><span class="glyphicon glyphicon-book"></span> Read my story</a>                &nbsp;&nbsp;|&nbsp;&nbsp;
-				        <a class="youtube" href="<?php echo $this->escape($result->video_code);?>"><span class="glyphicon glyphicon-facetime-video"></span> Watch my video</a>
+				        <strong>Country: </strong> <?php echo $this->escape($result->country);?>       &nbsp;&nbsp;|&nbsp;&nbsp;
+				        <a href="<?php echo JRoute::_('index.php?option=com_smf&task=profile&id='. $result->id);?>" target="_blank"><span class="glyphicon glyphicon-book"></span> Read my story</a>
+				        <!--a class="youtube" href="<?php echo $this->escape($result->video_code);?>"><span class="glyphicon glyphicon-facetime-video"></span> Watch my video</a-->
 				   	</div>
 				   	<!--div class="col-md-3 span3"> <a href=""><span class="icon-book"></span> Read my story</a></div> &nbsp;&nbsp;|&nbsp;&nbsp;
 			        <div class="col-md-3 span3"><a href=""><span class="icon-video"></span> Watch my video</a></div-->
 	      		</div> 
-	            <div class="row" >
+	            <div class="row">
 	        		<div class="col-md-9 smf-story-ellipsis"> 
 	        			<?php echo $this->escape($result->my_story);?> 
 	        		</div><a href="<?php echo JRoute::_('index.php?option=com_smf&task=profile&id='. $result->id);?>" target="_blank">Read more</a>
@@ -53,7 +53,7 @@ defined('_JEXEC') or die;
 			    </div-->
   			</div>
   		</div>
-  		<hr>
+  		<hr class="smf-horizontal-rule-style">
     <?php endforeach; ?>
 </div>
 <div class="row" style="text-align:center;">
