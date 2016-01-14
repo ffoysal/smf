@@ -9,6 +9,37 @@
 
 defined('_JEXEC') or die;
 
+function formatDob($dateOfBirth) {
+
+	$dob = explode("-", $dateOfBirth);
+	if($dob[1] == '01') {
+		$dob[1] = 'Jan';
+	} elseif ($dob[1] == '02') {
+		$dob[1] = 'Feb';
+	} elseif ($dob[1] == '03') {
+		$dob[1] = 'Mar';
+	} elseif ($dob[1] == '04') {
+		$dob[1] = 'Apr';
+	} elseif ($dob[1] == '05') {
+		$dob[1] = 'May';
+	} elseif ($dob[1] == '06') {
+		$dob[1] = 'Jun';
+	} elseif ($dob[1] == '07') {
+		$dob[1] = 'Jul';
+	} elseif ($dob[1] == '08') {
+		$dob[1] = 'Aug';
+	} elseif ($dob[1] == '09') {
+		$dob[1] = 'Sep';
+	} elseif ($dob[1] == '10') {
+		$dob[1] = 'Oct';
+	} elseif ($dob[1] == '11') {
+		$dob[1] = 'Nov';
+	} elseif ($dob[1] == '12') {
+		$dob[1] = 'Dec';
+	}
+	return $dob;
+}
+
 ?>
 <div class="search-result top-border-style">
 	<!--table-->
@@ -65,7 +96,7 @@ defined('_JEXEC') or die;
 	    						<?php if ($this->escape($result->birth_date)===NULL) : ?>
 	    							<?php echo JText::_('COM_SMF_NA');?>
 	    						<?php else:?>
-		    						<?php echo $this->escape($result->birth_date);?>
+		    						<?php echo $this->escape(formatDob($result->birth_date)[1] . ' ' . formatDob($result->birth_date)[2]. ', ' .formatDob($result->birth_date)[0]);?>
 		    					<?php endif; ?>
 	    					</div>
 	    				</div>
@@ -79,18 +110,6 @@ defined('_JEXEC') or die;
 	    						<?php else:?>
 	    							<?php echo $this->escape($result->country);?>
 	    						<?php endif; ?>
-	    					</div>
-	    				</div>
-	    				<div class="row">
-		    				<div class="col-md-5">
-		    					<strong><?php echo JText::_('COM_SMF_CHORES');?></strong>
-	    					</div>
-	    					<div class="col-md-7">
-	    						<?php if ($this->escape($result->chores_work)===NULL) : ?>
-	    							<?php echo JText::_('COM_SMF_NA');?>
-	    						<?php else:?>
-		    						<?php echo $this->escape($result->chores_work);?>
-		    					<?php endif; ?>
 	    					</div>
 	    				</div>
 	    				<div class="row">
@@ -114,18 +133,6 @@ defined('_JEXEC') or die;
 	    							<?php echo JText::_('COM_SMF_NA');?>
 	    						<?php else:?>
 		    						<?php echo $this->escape($result->hobbies);?>
-		    					<?php endif; ?>
-	    					</div>
-	    				</div>
-	    				<div class="row">
-		    				<div class="col-md-5">
-		    					<strong><?php echo JText::_('COM_SMF_FAV_GAME');?></strong>
-	    					</div>
-	    					<div class="col-md-7">
-		    					<?php if ($this->escape($result->favourite_game)===NULL) : ?>
-	    							<?php echo JText::_('COM_SMF_NA');?>
-	    						<?php else:?>
-		    						<?php echo $this->escape($result->favourite_game);?>
 		    					<?php endif; ?>
 	    					</div>
 	    				</div>

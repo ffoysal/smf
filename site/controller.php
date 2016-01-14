@@ -45,11 +45,27 @@ class SmfController extends JControllerLegacy
 	 */
 	public function search()
 	{
+		// Slashes cause errors, <> get stripped anyway later on. # causes problems.
+		$badchars = array('#', '>', '<', '\\');
+		$id = trim(str_replace($badchars, '', $this->input->getString('id', null, 'post')));
+
+		if (substr($id, 0, 1) == '"' && substr($id, -1) == '"')
+		{
+			$post['id'] = substr($id, 1, -1);
+		}
+		else
+		{
+			$post['id'] = $id;
+		}
+
+		if ($post['id'] === '')
+		{
+			unset($post['id']);
+		}
+
 		if($this->input->getWord('country', null, 'post') != 'Please Select') {
 			$post['country']     = $this->input->getWord('country', null, 'post');
 		}
-		$post['birthMonth']     = $this->input->getWord('birthMonth', null, 'post');
-		$post['birthDay']     = $this->input->getUInt('birthDay', null, 'post');
 		$post['age']     = $this->input->getUInt('age', null, 'post');
 		$post['gender'] = $this->input->getWord('gender', null, 'post');
 		$post['limit']        = $this->input->getUInt('limit', null, 'post');
@@ -61,14 +77,6 @@ class SmfController extends JControllerLegacy
 		if ($post['country'] === 'Please Select' || $post['country'] === 'PleaseSelect' )
 		{
 			unset($post['country']);
-		}
-		if ($post['birthMonth'] === 'Please Select' || $post['birthMonth'] === 'PleaseSelect' )
-		{
-			unset($post['birthMonth']);
-		}
-		if ($post['birthDay'] === 0)
-		{
-			unset($post['birthDay']);
 		}
 		if ($post['age'] === 0)
 		{

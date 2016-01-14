@@ -12,6 +12,6 @@ defined('_JEXEC') or die;
 
 <!--?php if ($this->error) : ?-->
 <div class="error">
-	<?php echo 'This is an error page!'; ?>
+	<?php echo 'Sorry your search criteria does not match any records from our database. Please try to search again with different search criteria.!'; ?>
 </div>
 <!--?php endif; ?-->

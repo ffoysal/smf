@@ -28,11 +28,8 @@ defined('_JEXEC') or die;
 				    	<strong>Gender: </strong> <?php echo $this->escape($result->gender);?>      &nbsp;&nbsp;|&nbsp;&nbsp;
 				        <strong>Country: </strong> <?php echo $this->escape($result->country);?>       &nbsp;&nbsp;|&nbsp;&nbsp;
 				        <a href="<?php echo JRoute::_('index.php?option=com_smf&task=profile&id='. $result->id);?>" target="_blank"><span class="glyphicon glyphicon-book"></span> Read my story</a>
-				        <!--a class="youtube" href="<?php echo $this->escape($result->video_code);?>"><span class="glyphicon glyphicon-facetime-video"></span> Watch my video</a-->
-				   	</div>
-				   	<!--div class="col-md-3 span3"> <a href=""><span class="icon-book"></span> Read my story</a></div> &nbsp;&nbsp;|&nbsp;&nbsp;
-			        <div class="col-md-3 span3"><a href=""><span class="icon-video"></span> Watch my video</a></div-->
-	      		</div> 
+				        </div>
+				  </div> 
 	            <div class="row">
 	        		<div class="col-md-9 smf-story-ellipsis"> 
 	        			<?php echo $this->escape($result->my_story);?> 
@@ -48,9 +45,6 @@ defined('_JEXEC') or die;
 			          	</div>
 			        </div>
 			    </div>
-			    <!--div class="row">
-			        
-			    </div-->
   			</div>
   		</div>
   		<hr class="smf-horizontal-rule-style">

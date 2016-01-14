@@ -47,28 +47,27 @@ class SmfModelChildList extends JModelLegacy
 		/// Get parameters.
 		$params = $app->getParams();
 
-		if ($params->get('gender') == 1)
+		/*if ($params->get('gender') == 1)
 		{
 			$gender = 'Male';
 		} else if ($params->get('gender') == 2)
 		{
 			$gender = 'Female';
-		}
+		}*/
 
 		// Set the search parameters
+		$id  = urldecode($app->input->getString('id'));
 		$gender  = urldecode($app->input->getString('gender'));
 		$match    = $app->input->get('gender', $gender, 'word');
 		$country = $app->input->get('country', $params->get('country', 'Please Select'), 'word');
-		$birthMonth = $app->input->get('birthMonth', $params->get('birthMonth', 'Please Select'), 'word');
-		$birthDay = $app->input->get('birthDay', $params->get('birthDay', 'Please Select'), 'uint');
 		$age = $app->input->get('age', $params->get('age', 'Please Select'), 'uint');
-		$this->setSearch($gender, $match, $country, $birthMonth, $birthDay, $age);
+		$this->setSearch($gender, $match, $country, $age, $id);
 	}
 
 	/**
 	 * Method to set the search parameters
 	 *
-	 * @param   string  $keyword   string search string
+	 * @param   string  $id   string search string
 	 * @param   string  $match     matching option, exact|any|all
 	 * @param   string  $ordering  option, newest|oldest|popular|alpha|category
 	 *
@@ -76,20 +75,17 @@ class SmfModelChildList extends JModelLegacy
 	 *
 	 * @access	public
 	 */
-	public function setSearch($gender, $match = 'Male', $country = 'Bangladesh', $birthMonth='January', $birthDay=1, $age=1)
+	public function setSearch($gender, $match = 'Male', $country = 'Bangladesh', $age=1, $id)
 	{
+		if (isset($id))
+		{
+			$this->setState('originId', $id);
+			$this->setState('id', $id);
+		}
+
 		if (isset($match))
 		{
 			$this->setState('match', $match);
-		}
-
-		if (isset($birthMonth))
-		{
-			$this->setState('birthMonth', $birthMonth);
-		}
-		if (isset($birthDay))
-		{
-			$this->setState('birthDay', $birthDay);
 		}
 		if (isset($age))
 		{
@@ -112,7 +108,7 @@ class SmfModelChildList extends JModelLegacy
 		// Lets load the content if it doesn't already exist
 		if ($this->_data===NULL)
 		{
-			$results = $this->getResults($this->getState('match'), $this->getState('country'), $this->getState('birthMonth'), $this->getState('birthDay'), $this->getState('age'));
+			$results = $this->getResults($this->getState('match'), $this->getState('country'), $this->getState('age'), $this->getState('id'));
 
 			$this->_total = count($results);
 
@@ -173,11 +169,11 @@ class SmfModelChildList extends JModelLegacy
 	 *
 	 * @since   1.6
 	 */
-	public function getResults($gender, $country, $birthMonth, $birthDay, $age)
+	public function getResults($gender, $country, $age, $id)
 	{
 		$db = JFactory::getDbo();
 
-		$whrClause = $this->buildWhereClause($gender, $country, $birthMonth, $birthDay, $age, $db);
+		$whrClause = $this->buildWhereClause($gender, $country, $age, $db, $id);
 		$query = $db->getQuery(true);
 		$query->select('*');
 		$query->from($db->quoteName('#__smf_child_data'));
@@ -213,7 +209,7 @@ class SmfModelChildList extends JModelLegacy
 	 *
 	 * @since   1.6
 	 */
-	public function buildWhereClause($gender, $country, $birthMonth, $birthDay, $age, $db)
+	public function buildWhereClause($gender, $country, $age, $db, $id)
 	{
 		$whereClause = '';
 		$curYear = date('Y');
@@ -228,21 +224,16 @@ class SmfModelChildList extends JModelLegacy
 			$whereClause = $whereClause . $andString . $db->quoteName('gender') . " = " . $db->quote($gender );
 			$andString = " AND ";
 		}
-		$monthStr = $this->getMonthInt($birthMonth);
-
-		if($monthStr != 0) {
-			$whereClause = $whereClause . $andString . $db->quoteName('birth_month') . " = " . $db->quote($monthStr );
-			$andString = " AND ";
-		}
-		
-		if($birthDay != 'Please Select') {
-			$whereClause = $whereClause . $andString . $db->quoteName('birth_day') . " = " . $db->quote($birthDay );
-			$andString = " AND ";
-		}
 		
 		if($age != 'Please Select') {
 			$whereClause = $whereClause . $andString . $db->quoteName('birth_year') . " = " . $db->quote($curYear - $age);
+			$andString = " AND ";
 		}
+
+		if($id != '') {
+			$whereClause = $whereClause . $andString . $db->quoteName('id') . " = " . $db->quote($id);
+		}
+
 		return $whereClause;
 	}
 /**
