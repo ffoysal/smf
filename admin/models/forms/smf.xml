@@ -31,7 +31,8 @@
 				default=""
 				required="true"
 				/>
-<field name="gender" type="list" default="Male" label="COM_SMF_GENDER" description="COM_SMF_GENDER_DESC">
+<field name="gender" type="list" label="COM_SMF_GENDER" description="COM_SMF_GENDER_DESC">
+  <option value=""></option>
   <option value="Male">Male</option>
   <option value="Female">Female</option>
 </field>
