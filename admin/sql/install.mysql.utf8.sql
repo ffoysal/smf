@@ -21,6 +21,7 @@ CREATE TABLE `#__smf_child_data` (
 	`hobbies` VARCHAR(250),
 	`favourite_game` VARCHAR(250),
 	`dream` VARCHAR(250),
+	`sponsored` tinyint default 0,
 	PRIMARY KEY (`id`)
 )
 	ENGINE =MyISAM
