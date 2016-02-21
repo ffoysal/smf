@@ -46,16 +46,17 @@ class smfViewChildlist extends JViewLegacy
 		// Built select country lists
 		$ageList   = array();
 		$ageList[] = JHtml::_('select.option', 'Please Select', JText::_('COM_SMF_PLEASE_SELECT_AGE'));
-		$ageList[] = JHtml::_('select.option', '1', JText::_('1'));
-		$ageList[] = JHtml::_('select.option', '2', JText::_('2'));
-		$ageList[] = JHtml::_('select.option', '3', JText::_('3'));
-		$ageList[] = JHtml::_('select.option', '4', JText::_('4'));
 		$ageList[] = JHtml::_('select.option', '5', JText::_('5'));
 		$ageList[] = JHtml::_('select.option', '6', JText::_('6'));
 		$ageList[] = JHtml::_('select.option', '7', JText::_('7'));
 		$ageList[] = JHtml::_('select.option', '8', JText::_('8'));
 		$ageList[] = JHtml::_('select.option', '9', JText::_('9'));
 		$ageList[] = JHtml::_('select.option', '10', JText::_('10'));
+		$ageList[] = JHtml::_('select.option', '11', JText::_('11'));
+		$ageList[] = JHtml::_('select.option', '12', JText::_('12'));
+		$ageList[] = JHtml::_('select.option', '13', JText::_('13'));
+		$ageList[] = JHtml::_('select.option', '14', JText::_('14'));
+		$ageList[] = JHtml::_('select.option', '15', JText::_('15'));
 
 		$lists['age'] = JHtml::_('select.genericlist', $ageList, 'age', 'class="inputbox"', 'value', 'text', $state->get('age'));
 
