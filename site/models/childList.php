@@ -231,7 +231,7 @@ class SmfModelChildList extends JModelLegacy
 		}
 
 		if($id != '') {
-			$whereClause = $whereClause . $andString . $db->quoteName('id') . " = " . $db->quote($id);
+			$whereClause = $whereClause . $andString . $db->quoteName('student_id') . " = " . $db->quote($id);
 			$andString = " AND ";
 		}		
 		$whereClause = $whereClause . $andString . $db->quoteName('show_in_site') . " =1";
